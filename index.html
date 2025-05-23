@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vedant Vardhaan | Data Science & Machine Learning Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #10b981;
+            --accent: #f97316;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --text: #334155;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--dark) 0%, #1e40af 100%);
+        }
+        
+        .section {
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+        
+        .card {
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .skill-tag {
+            border-radius: 16px;
+            padding: 4px 12px;
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: inline-block;
+            margin: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .skill-tag:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 28px;
+            padding-bottom: 40px;
+        }
+        
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: var(--primary);
+        }
+        
+        .timeline-item::after {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 14px;
+            bottom: 0;
+            width: 2px;
+            background-color: #e2e8f0;
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after, .nav-link.active:after {
+            width: 100%;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #1e40af;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .animated-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .animated-bg div {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: floatBubble 15s infinite linear;
+        }
+        
+        .animated-bg div:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+            animation-duration: 25s;
+        }
+        
+        .animated-bg div:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            left: 20%;
+            animation-delay: 1s;
+            animation-duration: 20s;
+        }
+        
+        .animated-bg div:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            top: 30%;
+            left: 80%;
+            animation-delay: 2s;
+            animation-duration: 18s;
+        }
+        
+        .animated-bg div:nth-child(4) {
+            width: 50px;
+            height: 50px;
+            top: 70%;
+            left: 70%;
+            animation-delay: 0s;
+            animation-duration: 15s;
+        }
+        
+        .animated-bg div:nth-child(5) {
+            width: 70px;
+            height: 70px;
+            top: 20%;
+            left: 30%;
+            animation-delay: 3s;
+            animation-duration: 30s;
+        }
+        
+        @keyframes floatBubble {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e2e8f0;
+            overflow: hidden;
+        }
+        
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            transition: width 1s ease-in-out;
+        }
+        
+        .contact-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-icon:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 100;
+        }
+        
+        .scroll-top.visible {
+            opacity: 1;
+        }
+        
+        .profile-img-container {
+            position: relative;
+            border: 5px solid white;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+            width: 350px;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @media (max-width: 768px) {
+            .profile-img-container {
+                width: 280px;
+                height: 280px;
+            }
+        }
+        
+        .profile-img-placeholder {
+            font-size: 10rem;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <header class="fixed w-full bg-white bg-opacity-95 shadow-sm z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="#home" class="text-2xl font-bold text-primary">
+                <span class="text-primary">V</span><span class="text-secondary">V</span>
+            </a>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-10">
+                    <li><a href="#home" class="nav-link active text-gray-800 hover:text-primary font-medium">Home</a></li>
+                    <li><a href="#resume" class="nav-link text-gray-800 hover:text-primary font-medium">Resume</a></li>
+                    <li><a href="#projects" class="nav-link text-gray-800 hover:text-primary font-medium">Projects</a></li>
+                    <li><a href="#contact" class="nav-link text-gray-800 hover:text-primary font-medium">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-800 hover:text-primary focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white w-full py-4 px-6">
+            <ul class="flex flex-col space-y-4">
+                <li><a href="#home" class="text-gray-800 hover:text-primary font-medium block">Home</a></li>
+                <li><a href="#resume" class="text-gray-800 hover:text-primary font-medium block">Resume</a></li>
+                <li><a href="#projects" class="text-gray-800 hover:text-primary font-medium block">Projects</a></li>
+                <li><a href="#contact" class="text-gray-800 hover:text-primary font-medium block">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient min-h-screen flex items-center relative overflow-hidden">
+        <div class="animated-bg">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="container mx-auto px-4 py-16 relative z-10">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4">
+                        Hello, I'm <br><span class="text-accent">Vedant Vardhaan</span>
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-8">Data Science Student & Machine Learning Enthusiast</p>
+                    <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                        <a href="#projects" class="btn-primary px-8 py-3 rounded-full font-semibold">View My Work</a>
+                        <a href="#contact" class="btn-outline px-8 py-3 rounded-full font-semibold">Contact Me</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center md:justify-end">
+                    <div class="profile-img-container">
+                        <img src="vedant.jpg" alt="Vedant Vardhaan" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2">About Me</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-lg max-w-3xl mx-auto">I'm a Data Science student at UC San Diego with a passion for machine learning, AI, and software development. My goal is to create meaningful solutions that leverage data to solve complex problems.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card bg-gray-50 p-6 shadow-sm">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Machine Learning</h3>
+                    <p>Experience with TensorFlow, Scikit-learn, Neural Networks, NLP, and Generative AI models. Skilled in developing predictive algorithms and data pipelines.</p>
+                </div>
+
+                <div class="card bg-gray-50 p-6 shadow-sm">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Data Analytics</h3>
+                    <p>Proficient in Pandas, NumPy, Matplotlib, Seaborn, Statistical Modeling, Time Series Analysis, and Monte Carlo Simulations.</p>
+                </div>
+
+                <div class="card bg-gray-50 p-6 shadow-sm">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Full Stack Development</h3>
+                    <p>Experience in React.js, React Native, Node.js, Express.js, RESTful APIs, PostgreSQL, and MongoDB for creating seamless applications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="section bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2">My Resume</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-lg max-w-3xl mx-auto">My professional journey, education, and relevant skills in the field of data science and software development.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+                <!-- Education Column -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6 flex items-center">
+                        <span class="inline-block mr-3 text-primary"><i class="fas fa-graduation-cap"></i></span>
+                        Education
+                    </h3>
+                    <div class="timeline-item">
+                        <div class="bg-white p-6 rounded-lg shadow-sm">
+                            <div class="text-primary font-medium">Sept 2023 - Mar 2027 (expected)</div>
+                            <h4 class="text-xl font-semibold mt-1">Bachelor of Science in Data Science</h4>
+                            <p class="text-gray-700">University of California - San Diego (UCSD)</p>
+                            <p class="font-medium mt-2">GPA: 3.96 | Honors: Provost Honors</p>
+                            <p class="mt-4"><strong>Relevant Coursework:</strong></p>
+                            <p>Data Structures & Algorithms, Statistical Methods, Linear Algebra, Calculus for Science & Engineering, Introduction to Data Science, Managing Diverse Teams, Statistical Analysis, Data Visualization</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Column -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6 flex items-center">
+                        <span class="inline-block mr-3 text-primary"><i class="fas fa-briefcase"></i></span>
+                        Experience
+                    </h3>
+
+                    <div class="timeline-item">
+                        <div class="bg-white p-6 rounded-lg shadow-sm">
+                            <div class="text-primary font-medium">Mar 2025 - Present</div>
+                            <h4 class="text-xl font-semibold mt-1">Tutor/Instructional Assistant</h4>
+                            <p class="text-gray-700">Halicioglu Data Science Institute, UC San Diego</p>
+                            <ul class="mt-4 list-disc list-inside">
+                                <li>Conduct weekly discussion sections and office hours for DSC 40A, reinforcing key concepts in empirical risk minimization, optimization, regression, classification, and discrete probability.</li>
+                                <li>Provide targeted tutoring to clarify theoretical machine learning principles, ensuring students develop rigorous problem-solving and mathematical reasoning skills.</li>
+                                <li>Evaluate assignments and exams with a focus on consistency and fairness, offering structured feedback to enhance comprehension.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="bg-white p-6 rounded-lg shadow-sm">
+                            <div class="text-primary font-medium">Nov 2024 - Present</div>
+                            <h4 class="text-xl font-semibold mt-1">Software Developer</h4>
+                            <p class="text-gray-700">Computer Science and Engineering Society (CSES Open-Source)</p>
+                            <ul class="mt-4 list-disc list-inside">
+                                <li>Developing a finance app with real-time budget tracking, spending analysis, and goal setting for students.</li>
+                                <li>Implementing React Native, Node.js, and PostgreSQL to provide seamless cross-platform experience.</li>
+                                <li>Enhancing security, scalability, and functionality for a comprehensive user experience, aiming for full deployment on iOS and Android.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="bg-white p-6 rounded-lg shadow-sm">
+                            <div class="text-primary font-medium">Oct 2024 - Jan 2025</div>
+                            <h4 class="text-xl font-semibold mt-1">Quantitative Analyst</h4>
+                            <p class="text-gray-700">Triton Quantitative Trading (TQT)</p>
+                            <ul class="mt-4 list-disc list-inside">
+                                <li>Developed a Monte Carlo simulation model using stochastic processes and Brownian motion to forecast stock prices across thousands of iterations.</li>
+                                <li>Optimized volatility estimation and drift parameters through backtesting, refining confidence interval calculations for probabilistic risk assessment.</li>
+                                <li>Built an interactive Streamlit dashboard with Yahoo Finance to visualize stock price volatility and risk metrics.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="bg-white p-6 rounded-lg shadow-sm">
+                            <div class="text-primary font-medium">Jun 2024 - Sept 2024</div>
+                            <h4 class="text-xl font-semibold mt-1">Data Science Intern</h4>
+                            <p class="text-gray-700">Indian Institute of Technology (IIT) - Guwahati</p>
+                            <ul class="mt-4 list-disc list-inside">
+                                <li>Developed a Convolutional Neural Network Image-processing model with ResNet50 for SAR image classification, achieving 80% accuracy in segmenting land cover across agriculture, barren land, grassland, and urban areas.</li>
+                                <li>Applied advanced speckle filters (Lee and Gamma MAP) to enhance SAR image quality by effectively reducing noise.</li>
+                                <li>Conducted extensive model evaluation, using precision, recall, F1-scores, and confusion matrices to ensure robust classification performance.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold mb-6 flex items-center">
+                    <span class="inline-block mr-3 text-primary"><i class="fas fa-laptop-code"></i></span>
+                    Technical Skills
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Programming Languages</h4>
+                        <div class="flex flex-wrap">
+                            <div class="skill-tag">Python</div>
+                            <div class="skill-tag">Java</div>
+                            <div class="skill-tag">JavaScript</div>
+                            <div class="skill-tag">R</div>
+                            <div class="skill-tag">SQL</div>
+                            <div class="skill-tag">HTML</div>
+                            <div class="skill-tag">CSS</div>
+                        </div>
+                        
+                        <h4 class="text-lg font-semibold mt-6 mb-4">Machine Learning & AI</h4>
+                        <div class="flex flex-wrap">
+                            <div class="skill-tag">TensorFlow</div>
+                            <div class="skill-tag">Scikit-learn</div>
+                            <div class="skill-tag">Neural Networks</div>
+                            <div class="skill-tag">NLP</div>
+                            <div class="skill-tag">Generative AI</div>
+                            <div class="skill-tag">Hugging Face</div>
+                            <div class="skill-tag">LangChain</div>
+                            <div class="skill-tag">OpenCV</div>
+                            <div class="skill-tag">ChromaDB</div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Data Science & Analytics</h4>
+                        <div class="flex flex-wrap">
+                            <div class="skill-tag">Pandas</div>
+                            <div class="skill-tag">NumPy</div>
+                            <div class="skill-tag">Matplotlib</div>
+                            <div class="skill-tag">Seaborn</div>
+                            <div class="skill-tag">Statistical Modeling</div>
+                            <div class="skill-tag">Time Series Analysis</div>
+                            <div class="skill-tag">Monte Carlo Simulations</div>
+                        </div>
+                        
+                        <h4 class="text-lg font-semibold mt-6 mb-4">Development</h4>
+                        <div class="flex flex-wrap">
+                            <div class="skill-tag">React.js</div>
+                            <div class="skill-tag">React Native</div>
+                            <div class="skill-tag">Node.js</div>
+                            <div class="skill-tag">Express.js</div>
+                            <div class="skill-tag">PostgreSQL</div>
+                            <div class="skill-tag">MongoDB</div>
+                            <div class="skill-tag">RESTful APIs</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2">My Projects</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-lg max-w-3xl mx-auto">A showcase of my technical projects in machine learning, data science, and software development.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="card bg-white shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gray-100 flex items-center justify-center">
+                        <div class="text-4xl text-gray-400">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-semibold">Watts the Problem?</h3>
+                            <span class="text-xs bg-blue-100 text-blue-600 py-1 px-2 rounded">Mar 2025</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Analyzing Power Outages using ML techniques.</p>
+                        <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                            <li>• Developed an end-to-end ML pipeline using Scikit-learn</li>
+                            <li>• Optimized a Random Forest model with GridSearchCV</li>
+                            <li>• Applied cross-validation (74.3%) to enhance generalization</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Python</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Scikit-learn</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">RandomForest</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="card bg-white shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gray-100 flex items-center justify-center">
+                        <div class="text-4xl text-gray-400">
+                            <i class="fas fa-comment-medical"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-semibold">Blood Report Analysis Chatbot</h3>
+                            <span class="text-xs bg-blue-100 text-blue-600 py-1 px-2 rounded">Oct 2024</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">AI-powered RAG chatbot for blood report analysis.</p>
+                        <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                            <li>• Built using LangChain and ChromaDB</li>
+                            <li>• Implemented Hugging Face embeddings and PyPDFLoader</li>
+                            <li>• Developed an interactive Streamlit UI</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">LangChain</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">ChromaDB</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Streamlit</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="card bg-white shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gray-100 flex items-center justify-center">
+                        <div class="text-4xl text-gray-400">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-semibold">MarketScope: Intelligent Stock Forecasting App</h3>
+                            <span class="text-xs bg-blue-100 text-blue-600 py-1 px-2 rounded">Oct 2024 - Jan 2025</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Stock price volatility estimation using Monte Carlo simulations.</p>
+                        <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                            <li>• Designed a Monte Carlo simulation model with variance reduction</li>
+                            <li>• Reduced computational time by 40%</li>
+                            <li>• Built an interactive Streamlit dashboard with Yahoo Finance</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Python</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Monte Carlo</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Streamlit</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="card bg-white shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gray-100 flex items-center justify-center">
+                        <div class="text-4xl text-gray-400">
+                            <i class="fas fa-image"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-semibold">Advanced Image Processing & KNN Classification</h3>
+                            <span class="text-xs bg-blue-100 text-blue-600 py-1 px-2 rounded">Jan 2024 - Mar 2024</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Comprehensive image processing suite with KNN classification.</p>
+                        <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                            <li>• Developed image processing operations using Python, NumPy, and PIL</li>
+                            <li>• Implemented K-Nearest Neighbors for image categorization</li>
+                            <li>• Built efficient image handling system with PIL-NumPy integration</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Python</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">NumPy</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">PIL</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">KNN</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="card bg-white shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gray-100 flex items-center justify-center">
+                        <div class="text-4xl text-gray-400">
+                            <i class="fas fa-book"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-semibold">CampusShelf</h3>
+                            <span class="text-xs bg-blue-100 text-blue-600 py-1 px-2 rounded">2024</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Library management system with book lending tracking.</p>
+                        <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                            <li>• Developed a Python-Tkinter desktop application for library management</li>
+                            <li>• Implemented MySQL database integration for data persistence</li>
+                            <li>• Created intuitive UI for book lending and tracking operations</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Python</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Tkinter</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">MySQL</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">GUI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="card bg-white shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gray-100 flex items-center justify-center">
+                        <div class="text-4xl text-gray-400">
+                            <i class="fas fa-music"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-semibold">Song Recommender</h3>
+                            <span class="text-xs bg-blue-100 text-blue-600 py-1 px-2 rounded">2024</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Music recommendation system using audio features and artist data.</p>
+                        <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                            <li>• Built a recommendation engine analyzing audio features</li>
+                            <li>• Implemented search functionality across artist discographies</li>
+                            <li>• Developed similarity matching algorithms for song suggestions</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Python</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">ML</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Audio Analysis</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">NLP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2">Get In Touch</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-lg max-w-3xl mx-auto">Feel free to contact me for collaborations, opportunities, or just to say hello!</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div class="contact-icon mr-4">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium">Email</h4>
+                                <p class="text-primary">vvardhaan@ucsd.edu</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="contact-icon mr-4">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium">Location</h4>
+                                <p>La Jolla, California</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-semibold mt-10 mb-6">Connect With Me</h3>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/in/vedant-vardhaan-152280256/" class="contact-icon" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/VedVar43789" class="contact-icon" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Send Me a Message</h3>
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-gray-700 mb-2" for="name">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2" for="email">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2" for="message">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                        </div>
+                        <button type="button" class="btn-primary px-8 py-3 rounded-md font-semibold w-full">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-2">Vedant Vardhaan</h3>
+                    <p class="text-gray-400">Data Science Student & Machine Learning Enthusiast</p>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="text-gray-400">&copy; 2025 Vedant Vardhaan. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div id="scrollTop" class="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.remove('shadow-sm');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.add('shadow-sm');
+            }
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Active Navigation Link
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Scroll to Top Button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
