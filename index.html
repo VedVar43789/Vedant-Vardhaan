@@ -327,8 +327,17 @@
     <!-- Navigation -->
     <header class="fixed w-full bg-white bg-opacity-95 shadow-sm z-50 transition-all duration-300" id="navbar">
         <div class="container mx-auto px-4 py-3 flex items-center justify-between">
-            <a href="#home" class="text-2xl font-bold text-primary">
-                <span class="text-primary">V</span><span class="text-secondary">V</span>
+            <a href="#home" class="relative group">
+                <div class="flex flex-col items-start">
+                    <div class="flex items-center space-x-1">
+                        <span class="text-2xl font-black bg-gradient-to-r from-blue-900 to-blue-600 bg-clip-text text-transparent group-hover:from-blue-600 group-hover:to-blue-900 transition-all duration-500">VEDANT</span>
+                        <div class="w-2 h-2 bg-blue-500 rounded-full group-hover:animate-pulse"></div>
+                    </div>
+                    <div class="flex items-center space-x-1 -mt-1">
+                        <div class="w-1 h-1 bg-blue-400 rounded-full group-hover:animate-ping"></div>
+                        <span class="text-lg font-bold text  transition-colors duration-300">VARDHAAN</span>
+                    </div>
+                </div>
             </a>
             <nav class="hidden md:block">
                 <ul class="flex space-x-10">
@@ -336,6 +345,7 @@
                     <li><a href="#resume" class="nav-link text-gray-800 hover:text-primary font-medium">Resume</a></li>
                     <li><a href="#projects" class="nav-link text-gray-800 hover:text-primary font-medium">Projects</a></li>
                     <li><a href="#contact" class="nav-link text-gray-800 hover:text-primary font-medium">Contact</a></li>
+                    <li><a href="https://github.com/VedVar43789" target="_blank" rel="noopener noreferrer" class="nav-link text-gray-800 hover:text-primary font-medium flex items-center"><i class="fab fa-github mr-1"></i>GitHub</a></li>
                 </ul>
             </nav>
             <div class="md:hidden">
@@ -351,6 +361,7 @@
                 <li><a href="#resume" class="text-gray-800 hover:text-primary font-medium block">Resume</a></li>
                 <li><a href="#projects" class="text-gray-800 hover:text-primary font-medium block">Projects</a></li>
                 <li><a href="#contact" class="text-gray-800 hover:text-primary font-medium block">Contact</a></li>
+                <li><a href="https://github.com/VedVar43789" target="_blank" rel="noopener noreferrer" class="text-gray-800 hover:text-primary font-medium block flex items-center"><i class="fab fa-github mr-2"></i>GitHub</a></li>
             </ul>
         </div>
     </header>
@@ -368,7 +379,7 @@
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4">
-                        Hello, I'm <br><span class="text-accent">Vedant Vardhaan</span>
+                        <span id="typewriter-text"></span><span class="text-accent" id="typewriter-name"></span><span class="animate-pulse">|</span>
                     </h1>
                     <p class="text-xl text-gray-300 mb-8">Data Science Student & Machine Learning Enthusiast</p>
                     <div class="flex flex-wrap gap-4 justify-center md:justify-start">
@@ -445,7 +456,7 @@
                             <p class="text-gray-700">University of California - San Diego (UCSD)</p>
                             <p class="font-medium mt-2">GPA: 3.96 | Honors: Provost Honors</p>
                             <p class="mt-4"><strong>Relevant Coursework:</strong></p>
-                            <p>Data Structures & Algorithms, Statistical Methods, Linear Algebra, Calculus for Science & Engineering, Introduction to Data Science, Managing Diverse Teams, Statistical Analysis, Data Visualization</p>
+                            <p>Data Structures & Algorithms, Statistical Methods, Linear Algebra, Calculus for Science & Engineering, Introduction to Data Science, Managing Diverse Teams, Statistical Analysis, Data Visualization, Probabilistic Modeling, Machine Learning</p>
                         </div>
                     </div>
                 </div>
@@ -459,9 +470,36 @@
 
                     <div class="timeline-item">
                         <div class="bg-white p-6 rounded-lg shadow-sm">
-                            <div class="text-primary font-medium">Mar 2025 - Present</div>
-                            <h4 class="text-xl font-semibold mt-1">Tutor/Instructional Assistant</h4>
-                            <p class="text-gray-700">Halicioglu Data Science Institute, UC San Diego</p>
+                            <div class="flex items-start justify-between mb-3">
+                                <div>
+                                    <div class="text-primary font-medium">Jul 2025 - Present</div>
+                                    <h4 class="text-xl font-semibold mt-1">Assistant Projects Director (Projects Mentor)</h4>
+                                    <p class="text-gray-700">Data Science Student Society (DS3), UC San Diego</p>
+                                </div>
+                                <div class="w-12 h-12 rounded-lg flex items-center justify-center ml-4 overflow-hidden">
+                                    <img src="assets/ds3.png" alt="DS3 Logo" class="w-full h-full object-contain">
+                                </div>
+                            </div>
+                            <ul class="mt-4 list-disc list-inside">
+                                <li>Lead the ideation and selection of 10–12+ quarterly data science projects by sourcing high-quality datasets, defining problem statements, and aligning scope with industry-relevant methodologies.</li>
+                                <li>Mentor multiple project teams through full data pipelines, providing guidance on data preprocessing, exploratory analysis, feature engineering, model selection, and deployment strategies.</li>
+                                <li>Collaborate with senior leadership in weekly technical meetings to coordinate project timelines, establish evaluation metrics, and oversee execution for end-of-quarter showcases.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="bg-white p-6 rounded-lg shadow-sm">
+                            <div class="flex items-start justify-between mb-3">
+                                <div>
+                                    <div class="text-primary font-medium">Mar 2025 - Jun 2025</div>
+                                    <h4 class="text-xl font-semibold mt-1">Tutor/Instructional Assistant</h4>
+                                    <p class="text-gray-700">Halicioglu Data Science Institute, UC San Diego</p>
+                                </div>
+                                <div class="w-12 h-12 rounded-lg flex items-center justify-center ml-4 overflow-hidden">
+                                    <img src="assets/hdsi.png" alt="HDSI Logo" class="w-full h-full object-contain">
+                                </div>
+                            </div>
                             <ul class="mt-4 list-disc list-inside">
                                 <li>Conduct weekly discussion sections and office hours for DSC 40A, reinforcing key concepts in empirical risk minimization, optimization, regression, classification, and discrete probability.</li>
                                 <li>Provide targeted tutoring to clarify theoretical machine learning principles, ensuring students develop rigorous problem-solving and mathematical reasoning skills.</li>
@@ -472,9 +510,16 @@
 
                     <div class="timeline-item">
                         <div class="bg-white p-6 rounded-lg shadow-sm">
-                            <div class="text-primary font-medium">Nov 2024 - Present</div>
-                            <h4 class="text-xl font-semibold mt-1">Engineering Manager & Software Developer</h4>
-                            <p class="text-gray-700">Computer Science and Engineering Society (CSES Open-Source)</p>
+                            <div class="flex items-start justify-between mb-3">
+                                <div>
+                                    <div class="text-primary font-medium">Nov 2024 - Present</div>
+                                    <h4 class="text-xl font-semibold mt-1">Engineering Manager & Software Developer</h4>
+                                    <p class="text-gray-700">Computer Science and Engineering Society (CSES Open-Source)</p>
+                                </div>
+                                <div class="w-12 h-12 rounded-lg flex items-center justify-center ml-4 overflow-hidden">
+                                    <img src="assets/cses.png" alt="CSES Logo" class="w-full h-full object-contain">
+                                </div>
+                            </div>
                             <ul class="mt-4 list-disc list-inside">
                                 <li>Lead development of TritonSpend, a cross-platform financial management app built with React Native, Node.js, and PostgreSQL.</li>
                                 <li>Oversee sprint planning, developer onboarding, code reviews, and architectural decisions to ensure scalable and secure feature delivery (e.g., budget tracking, real-time analytics, AI-based insights).</li>
@@ -485,9 +530,16 @@
 
                     <div class="timeline-item">
                         <div class="bg-white p-6 rounded-lg shadow-sm">
-                            <div class="text-primary font-medium">Oct 2024 - Jan 2025</div>
-                            <h4 class="text-xl font-semibold mt-1">Quantitative Analyst</h4>
-                            <p class="text-gray-700">Triton Quantitative Trading (TQT)</p>
+                            <div class="flex items-start justify-between mb-3">
+                                <div>
+                                    <div class="text-primary font-medium">Oct 2024 - Jan 2025</div>
+                                    <h4 class="text-xl font-semibold mt-1">Quantitative Analyst</h4>
+                                    <p class="text-gray-700">Triton Quantitative Trading (TQT)</p>
+                                </div>
+                                <div class="w-12 h-12 rounded-lg flex items-center justify-center ml-4 overflow-hidden">
+                                    <img src="assets/tqt.png" alt="Triton Quantitative Trading Logo" class="w-full h-full object-contain">
+                                </div>
+                            </div>
                             <ul class="mt-4 list-disc list-inside">
                                 <li>Built a hybrid LSTM/GRU forecasting model with Monte Carlo simulations using Geometric Brownian Motion for probabilistic stock predictions.</li>
                                 <li>Integrated technical indicators, VADER-based sentiment analysis, and risk metrics (Sharpe Ratio) for multi-modal input.</li>
@@ -498,9 +550,16 @@
 
                     <div class="timeline-item">
                         <div class="bg-white p-6 rounded-lg shadow-sm">
-                            <div class="text-primary font-medium">Jun 2024 - Sept 2024</div>
-                            <h4 class="text-xl font-semibold mt-1">Data Science Intern</h4>
-                            <p class="text-gray-700">Indian Institute of Technology (IIT) - Guwahati</p>
+                            <div class="flex items-start justify-between mb-3">
+                                <div>
+                                    <div class="text-primary font-medium">Jun 2024 - Sept 2024</div>
+                                    <h4 class="text-xl font-semibold mt-1">Data Science Intern</h4>
+                                    <p class="text-gray-700">Indian Institute of Technology (IIT) - Guwahati</p>
+                                </div>
+                                <div class="w-12 h-12 rounded-lg flex items-center justify-center ml-4 overflow-hidden">
+                                    <img src="assets/IITG_logo.png" alt="IIT Guwahati Logo" class="w-full h-full object-contain">
+                                </div>
+                            </div>
                             <ul class="mt-4 list-disc list-inside">
                                 <li>Developed a Convolutional Neural Network Image-processing model with ResNet50 for SAR image classification, achieving 80% accuracy in segmenting land cover across agriculture, barren land, grassland, and urban areas.</li>
                                 <li>Applied advanced speckle filters (Lee and Gamma MAP) to enhance SAR image quality by effectively reducing noise.</li>
@@ -831,7 +890,7 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
-                    <h3 class="text-2xl font-bold mb-2">Vedant Vardhaan</h3>
+                    <h3 class="text-2xl font-bold mb-2 text-gray-300">Vedant Vardhaan</h3>
                     <p class="text-gray-400">Data Science Student & Machine Learning Enthusiast</p>
                 </div>
                 <div class="text-center md:text-right">
@@ -983,6 +1042,35 @@
                     errorMessage.classList.add('hidden');
                 }, 5000);
             }
+        });
+        
+        // Typewriter Animation
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+        
+        // Start typewriter animation when page loads
+        window.addEventListener('load', function() {
+            const typewriterText = document.getElementById('typewriter-text');
+            const typewriterName = document.getElementById('typewriter-name');
+            
+            // Type "Hello, I'm " first
+            typeWriter(typewriterText, "Hello, I'm ", 80);
+            
+            // Type "Vedant Vardhaan" after a delay
+            setTimeout(() => {
+                typeWriter(typewriterName, "Vedant Vardhaan", 120);
+            }, 1000);
         });
     </script>
 </body>
