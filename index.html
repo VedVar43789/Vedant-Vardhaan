@@ -110,6 +110,61 @@
             transform: translateY(-2px) scale(1.05);
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
+
+        /* Programming Languages - Blue */
+        .skill-tag.programming {
+            background-color: rgba(37, 99, 235, 0.1);
+            color: #2563eb;
+        }
+        .skill-tag.programming:hover {
+            background-color: #2563eb;
+            color: white;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Cloud & Infrastructure - Green */
+        .skill-tag.cloud {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+        .skill-tag.cloud:hover {
+            background-color: #10b981;
+            color: white;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Machine Learning & AI - Purple */
+        .skill-tag.ml {
+            background-color: rgba(147, 51, 234, 0.1);
+            color: #9333ea;
+        }
+        .skill-tag.ml:hover {
+            background-color: #9333ea;
+            color: white;
+            box-shadow: 0 4px 12px rgba(147, 51, 234, 0.3);
+        }
+
+        /* Data Science & Analytics - Orange */
+        .skill-tag.data {
+            background-color: rgba(249, 115, 22, 0.1);
+            color: #f97316;
+        }
+        .skill-tag.data:hover {
+            background-color: #f97316;
+            color: white;
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+        }
+
+        /* Development - Teal */
+        .skill-tag.dev {
+            background-color: rgba(20, 184, 166, 0.1);
+            color: #14b8a6;
+        }
+        .skill-tag.dev:hover {
+            background-color: #14b8a6;
+            color: white;
+            box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+        }
         
         .skill-tag::before {
             content: '';
@@ -478,6 +533,57 @@
             border: 1px solid rgba(148, 163, 184, 0.28);
         }
 
+        /* Dark mode skill tags */
+        html[data-theme="dark"] .skill-tag.programming {
+            background-color: rgba(59, 130, 246, 0.15);
+            color: #93c5fd;
+        }
+        html[data-theme="dark"] .skill-tag.programming:hover {
+            background-color: #3b82f6;
+            color: white;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        html[data-theme="dark"] .skill-tag.cloud {
+            background-color: rgba(34, 197, 94, 0.15);
+            color: #86efac;
+        }
+        html[data-theme="dark"] .skill-tag.cloud:hover {
+            background-color: #22c55e;
+            color: white;
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+        }
+
+        html[data-theme="dark"] .skill-tag.ml {
+            background-color: rgba(168, 85, 247, 0.15);
+            color: #c4b5fd;
+        }
+        html[data-theme="dark"] .skill-tag.ml:hover {
+            background-color: #a855f7;
+            color: white;
+            box-shadow: 0 4px 12px rgba(168, 85, 247, 0.4);
+        }
+
+        html[data-theme="dark"] .skill-tag.data {
+            background-color: rgba(251, 146, 60, 0.15);
+            color: #fed7aa;
+        }
+        html[data-theme="dark"] .skill-tag.data:hover {
+            background-color: #fb923c;
+            color: white;
+            box-shadow: 0 4px 12px rgba(251, 146, 60, 0.4);
+        }
+
+        html[data-theme="dark"] .skill-tag.dev {
+            background-color: rgba(45, 212, 191, 0.15);
+            color: #99f6e4;
+        }
+        html[data-theme="dark"] .skill-tag.dev:hover {
+            background-color: #2dd4bf;
+            color: white;
+            box-shadow: 0 4px 12px rgba(45, 212, 191, 0.4);
+        }
+
         /* Reveal animations */
         .reveal {
             opacity: 0;
@@ -692,6 +798,26 @@
                         Experience
                     </h3>
 
+                    <div class="timeline-item reveal">
+                        <div class="bg-white p-6 rounded-lg shadow-sm">
+                            <div class="flex items-start justify-between mb-3">
+                                <div>
+                                    <div class="text-primary font-medium">Oct 2025 - Present</div>
+                                    <h4 class="text-xl font-semibold mt-1">Project Lead – Mangrove Monitoring</h4>
+                                    <p class="text-gray-700">Engineers for Exploration (E4E) @ UC San Diego</p>
+                                </div>
+                                <div class="w-12 h-12 rounded-lg flex items-center justify-center ml-4 overflow-hidden">
+                                    <img src="assets/e4e.png" alt="E4E Logo" class="w-full h-full object-contain">
+                                </div>
+                            </div>
+                            <ul class="mt-4 list-disc list-inside">
+                                <li>Leading an interdisciplinary team to develop an AI-driven system that predicts mangrove presence by fusing drone imagery and Sentinel-2 satellite data, advancing coastal ecosystem monitoring through remote sensing and machine learning.</li>
+                                <li>Overseeing data pipeline design, feature fusion, and model integration, collaborating with data and ML engineers to build scalable, high-performance workflows using Python, TensorFlow, NumPy, and Google Earth Engine APIs.</li>
+                                <li>Driving the project roadmap and research direction, bridging geospatial analytics, computer vision, and environmental informatics to deliver a deployable predictive model for the Scripps Institution of Oceanography.</li>
+                            </ul>
+                        </div>
+                    </div>
+
                     <div class="timeline-item reveal reveal-delay-1">
                         <div class="bg-white p-6 rounded-lg shadow-sm">
                             <div class="flex items-start justify-between mb-3">
@@ -825,66 +951,120 @@
                     <div>
                         <h4 class="text-lg font-semibold mb-4">Programming Languages</h4>
                         <div class="flex flex-wrap">
-                            <div class="skill-tag">Python</div>
-                            <div class="skill-tag">Java</div>
-                            <div class="skill-tag">JavaScript</div>
-                            <div class="skill-tag">R</div>
-                            <div class="skill-tag">SQL</div>
-                            <div class="skill-tag">HTML</div>
-                            <div class="skill-tag">CSS</div>
+                            <div class="skill-tag programming">Python</div>
+                            <div class="skill-tag programming">Java</div>
+                            <div class="skill-tag programming">JavaScript</div>
+                            <div class="skill-tag programming">R</div>
+                            <div class="skill-tag programming">SQL</div>
+                            <div class="skill-tag programming">HTML</div>
+                            <div class="skill-tag programming">CSS</div>
+                            <div class="skill-tag programming">TypeScript</div>
                         </div>
                         
                         <h4 class="text-lg font-semibold mt-6 mb-4">Cloud & Infrastructure</h4>
                         <div class="flex flex-wrap">
-                            <div class="skill-tag">AWS</div>
-                            <div class="skill-tag">EC2</div>
-                            <div class="skill-tag">S3</div>
-                            <div class="skill-tag">RDS</div>
-                            <div class="skill-tag">VPC</div>
-                            <div class="skill-tag">IAM</div>
-                            <div class="skill-tag">CloudTrail</div>
-                            <div class="skill-tag">GuardDuty</div>
+                            <div class="skill-tag cloud">AWS</div>
+                            <div class="skill-tag cloud">EC2</div>
+                            <div class="skill-tag cloud">S3</div>
+                            <div class="skill-tag cloud">RDS</div>
+                            <div class="skill-tag cloud">VPC</div>
+                            <div class="skill-tag cloud">IAM</div>
+                            <div class="skill-tag cloud">CloudTrail</div>
+                            <div class="skill-tag cloud">GuardDuty</div>
+                            <div class="skill-tag cloud">Azure</div>
+                            <div class="skill-tag cloud">Azure Key Vault</div>
+                            <div class="skill-tag cloud">Config</div>
+                            <div class="skill-tag cloud">Docker</div>
+                            <div class="skill-tag cloud">CI/CD</div>
                         </div>
                         
                         <h4 class="text-lg font-semibold mt-6 mb-4">Machine Learning & AI</h4>
                         <div class="flex flex-wrap">
-                            <div class="skill-tag">TensorFlow</div>
-                            <div class="skill-tag">Scikit-learn</div>
-                            <div class="skill-tag">Neural Networks</div>
-                            <div class="skill-tag">NLP</div>
-                            <div class="skill-tag">Generative AI</div>
-                            <div class="skill-tag">Hugging Face</div>
-                            <div class="skill-tag">LangChain</div>
-                            <div class="skill-tag">OpenCV</div>
-                            <div class="skill-tag">ChromaDB</div>
-                            <div class="skill-tag">Gemini Pro</div>
-                            <div class="skill-tag">Agentic AI</div>
-                            <div class="skill-tag">MCP</div>
+                            <div class="skill-tag ml">TensorFlow</div>
+                            <div class="skill-tag ml">Scikit-learn</div>
+                            <div class="skill-tag ml">Neural Networks</div>
+                            <div class="skill-tag ml">NLP</div>
+                            <div class="skill-tag ml">Generative AI</div>
+                            <div class="skill-tag ml">Hugging Face</div>
+                            <div class="skill-tag ml">LangChain</div>
+                            <div class="skill-tag ml">OpenCV</div>
+                            <div class="skill-tag ml">ChromaDB</div>
+                            <div class="skill-tag ml">Gemini Pro</div>
+                            <div class="skill-tag ml">Agentic AI</div>
+                            <div class="skill-tag ml">MCP</div>
+                            <div class="skill-tag ml">Computer Vision</div>
+                            <div class="skill-tag ml">Remote Sensing</div>
+                            <div class="skill-tag ml">Google Earth Engine</div>
+                            <div class="skill-tag ml">LSTM</div>
+                            <div class="skill-tag ml">GRU</div>
+                            <div class="skill-tag ml">CNN</div>
+                            <div class="skill-tag ml">ResNet50</div>
+                            <div class="skill-tag ml">Random Forest</div>
+                            <div class="skill-tag ml">KNN</div>
+                            <div class="skill-tag ml">GridSearchCV</div>
+                            <div class="skill-tag ml">Cross-validation</div>
+                            <div class="skill-tag ml">RAG</div>
+                            <div class="skill-tag ml">PyPDFLoader</div>
+                            <div class="skill-tag ml">VADER</div>
+                            <div class="skill-tag ml">Sentiment Analysis</div>
+                            <div class="skill-tag ml">SAR Image Processing</div>
+                            <div class="skill-tag ml">Speckle Filtering</div>
+                            <div class="skill-tag ml">LangGraph</div>
                         </div>
                     </div>
                     
                     <div>
                         <h4 class="text-lg font-semibold mb-4">Data Science & Analytics</h4>
                         <div class="flex flex-wrap">
-                            <div class="skill-tag">Pandas</div>
-                            <div class="skill-tag">NumPy</div>
-                            <div class="skill-tag">Matplotlib</div>
-                            <div class="skill-tag">Seaborn</div>
-                            <div class="skill-tag">Statistical Modeling</div>
-                            <div class="skill-tag">Time Series Analysis</div>
-                            <div class="skill-tag">Monte Carlo Simulations</div>
+                            <div class="skill-tag data">Pandas</div>
+                            <div class="skill-tag data">NumPy</div>
+                            <div class="skill-tag data">Matplotlib</div>
+                            <div class="skill-tag data">Seaborn</div>
+                            <div class="skill-tag data">Statistical Modeling</div>
+                            <div class="skill-tag data">Time Series Analysis</div>
+                            <div class="skill-tag data">Monte Carlo Simulations</div>
+                            <div class="skill-tag data">Data Preprocessing</div>
+                            <div class="skill-tag data">Feature Engineering</div>
+                            <div class="skill-tag data">Data Visualization</div>
+                            <div class="skill-tag data">Exploratory Data Analysis</div>
+                            <div class="skill-tag data">yFinance</div>
+                            <div class="skill-tag data">Technical Indicators</div>
+                            <div class="skill-tag data">Risk Metrics</div>
+                            <div class="skill-tag data">Sharpe Ratio</div>
+                            <div class="skill-tag data">Precision/Recall</div>
+                            <div class="skill-tag data">F1-Score</div>
+                            <div class="skill-tag data">Confusion Matrix</div>
+                            <div class="skill-tag data">Geospatial Analytics</div>
+                            <div class="skill-tag data">Environmental Informatics</div>
                         </div>
                         
                         <h4 class="text-lg font-semibold mt-6 mb-4">Development</h4>
                         <div class="flex flex-wrap">
-                            <div class="skill-tag">React.js</div>
-                            <div class="skill-tag">React Native</div>
-                            <div class="skill-tag">Node.js</div>
-                            <div class="skill-tag">Express.js</div>
-                            <div class="skill-tag">PostgreSQL</div>
-                            <div class="skill-tag">MongoDB</div>
-                            <div class="skill-tag">RESTful APIs</div>
-                            <div class="skill-tag">FastAPI</div>
+                            <div class="skill-tag dev">React.js</div>
+                            <div class="skill-tag dev">React Native</div>
+                            <div class="skill-tag dev">Node.js</div>
+                            <div class="skill-tag dev">Express.js</div>
+                            <div class="skill-tag dev">PostgreSQL</div>
+                            <div class="skill-tag dev">MongoDB</div>
+                            <div class="skill-tag dev">RESTful APIs</div>
+                            <div class="skill-tag dev">FastAPI</div>
+                            <div class="skill-tag dev">Streamlit</div>
+                            <div class="skill-tag dev">Tkinter</div>
+                            <div class="skill-tag dev">MySQL</div>
+                            <div class="skill-tag dev">GUI Development</div>
+                            <div class="skill-tag dev">Cross-platform</div>
+                            <div class="skill-tag dev">PIL</div>
+                            <div class="skill-tag dev">Image Processing</div>
+                            <div class="skill-tag dev">Audio Analysis</div>
+                            <div class="skill-tag dev">Sprint Planning</div>
+                            <div class="skill-tag dev">Code Reviews</div>
+                            <div class="skill-tag dev">QA Testing</div>
+                            <div class="skill-tag dev">Technical Documentation</div>
+                            <div class="skill-tag dev">D3.js</div>
+                            <div class="skill-tag dev">TopoJSON</div>
+                            <div class="skill-tag dev">Scrollama</div>
+                            <div class="skill-tag dev">Data Visualization</div>
+                            <div class="skill-tag dev">Interactive Storytelling</div>
                         </div>
                     </div>
                 </div>
@@ -902,8 +1082,35 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="card bg-white shadow-lg overflow-hidden">
+                <!-- Project 1 - The Seismic Lottery (May 2025 - Jun 2025) -->
+                <a href="https://vedvar43789.github.io/earthquakes/" target="_blank" rel="noopener noreferrer" class="card bg-white shadow-lg overflow-hidden block hover:shadow-xl transition-all duration-300">
+                    <div class="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
+                        <img src="assets/earth.png" alt="The Seismic Lottery cover" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-semibold">The Seismic Lottery: When Infrastructure Matters More Than Magnitude 🌍</h3>
+                            <span class="text-xs bg-green-100 text-green-600 py-1 px-2 rounded">May 2025 - Jun 2025</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Interactive data visualization exploring earthquake impacts based on infrastructure resilience and preparedness.</p>
+                        <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                            <li>• Built 3D interactive globe with D3.js for real-time earthquake visualization with dynamic tooltips</li>
+                            <li>• Developed educational storyline with scroll-based storytelling and energy calculator tools</li>
+                            <li>• <strong>🏆 Won Best Project Award & People's Choice Award</strong> among 42 teams</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">HTML5</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">CSS3</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">JavaScript</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">D3.js</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">TopoJSON</span>
+ 
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 2 - Watts the Problem (Mar 2025) -->
+                <a href="https://vedvar43789.github.io/watts-the-problem/" target="_blank" rel="noopener noreferrer" class="card bg-white shadow-lg overflow-hidden block hover:shadow-xl transition-all duration-300">
                     <div class="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
                         <img src="assets/outage.png" alt="Watts the Problem cover" class="w-full h-full object-cover">
                     </div>
@@ -926,9 +1133,35 @@
                             <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Cross-validation</span>
                         </div>
                     </div>
-                </div>
+                </a>
 
-                <!-- Project 2 -->
+                <!-- Project 2 - MarketScope (Oct 2024 - Jan 2025) -->
+                <a href="https://github.com/Igosain08/stock-forecast-app" target="_blank" rel="noopener noreferrer" class="card bg-white shadow-lg overflow-hidden block hover:shadow-xl transition-all duration-300">
+                    <div class="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
+                        <img src="assets/market.png" alt="MarketScope cover" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-semibold">MarketScope: Intelligent Stock Forecasting App</h3>
+                            <span class="text-xs bg-blue-100 text-blue-600 py-1 px-2 rounded">Oct 2024 - Jan 2025</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Hybrid LSTM/GRU model with Monte Carlo simulations for stock price forecasting.</p>
+                        <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                            <li>• Built hybrid LSTM/GRU model with Monte Carlo simulations for stock forecasting</li>
+                            <li>• Integrated technical indicators, sentiment analysis, and risk metrics</li>
+                            <li>• Deployed modular Streamlit app with yFinance and REST API</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Python</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">LSTM/GRU</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Monte Carlo</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Streamlit</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">NLP</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 3 - Blood Report Analysis Chatbot (Oct 2024) -->
                 <div class="card bg-white shadow-lg overflow-hidden">
                     <div class="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
                         <img src="assets/blood.png" alt="Blood Report Analysis Chatbot cover" class="w-full h-full object-cover">
@@ -955,33 +1188,33 @@
                     </div>
                 </div>
 
-                <!-- Project 3 -->
-                <div class="card bg-white shadow-lg overflow-hidden">
+                <!-- Project 4 - SAR Image Classification (Jun 2024 - Sept 2024) -->
+                <a href="https://github.com/VedVar43789/SAR-Image-Classification" target="_blank" rel="noopener noreferrer" class="card bg-white shadow-lg overflow-hidden block hover:shadow-xl transition-all duration-300">
                     <div class="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
-                        <img src="assets/market.png" alt="MarketScope cover" class="w-full h-full object-cover">
+                        <img src="assets/sar.png" alt="SAR Image Classification cover" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-xl font-semibold">MarketScope: Intelligent Stock Forecasting App</h3>
-                            <span class="text-xs bg-blue-100 text-blue-600 py-1 px-2 rounded">Oct 2024 - Jan 2025</span>
+                            <h3 class="text-xl font-semibold">SAR Image Classification with CNN</h3>
+                            <span class="text-xs bg-blue-100 text-blue-600 py-1 px-2 rounded">Jun 2024 - Sept 2024</span>
                         </div>
-                        <p class="text-gray-600 mb-4">Hybrid LSTM/GRU model with Monte Carlo simulations for stock price forecasting.</p>
+                        <p class="text-gray-600 mb-4">CNN-based SAR image classification with speckle filtering for land cover analysis.</p>
                         <ul class="text-sm text-gray-600 space-y-2 mb-6">
-                            <li>• Built hybrid LSTM/GRU model with Monte Carlo simulations for stock forecasting</li>
-                            <li>• Integrated technical indicators, sentiment analysis, and risk metrics</li>
-                            <li>• Deployed modular Streamlit app with yFinance and REST API</li>
+                            <li>• Developed CNN model with ResNet50 for SAR image classification achieving 80% accuracy</li>
+                            <li>• Applied Lee and Gamma MAP speckle filters to enhance SAR image quality</li>
+                            <li>• Conducted extensive evaluation using precision, recall, F1-scores, and confusion matrices</li>
                         </ul>
                         <div class="flex flex-wrap gap-2">
                             <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Python</span>
-                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">LSTM/GRU</span>
-                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Monte Carlo</span>
-                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Streamlit</span>
-                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">NLP</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">TensorFlow</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">CNN</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">ResNet50</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">SAR Processing</span>
                         </div>
                     </div>
-                </div>
+                </a>
 
-                <!-- Project 4 -->
+                <!-- Project 5 - Advanced Image Processing & KNN (Jan 2024 - Mar 2024) -->
                 <div class="card bg-white shadow-lg overflow-hidden">
                     <div class="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
                         <img src="assets/knn.png" alt="KNN Project cover" class="w-full h-full object-cover">
@@ -1006,7 +1239,7 @@
                     </div>
                 </div>
 
-                <!-- Project 5 -->
+                <!-- Project 6 - CampusShelf (2024) -->
                 <div class="card bg-white shadow-lg overflow-hidden">
                     <div class="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
                         <img src="assets/lib.png" alt="CampusShelf cover" class="w-full h-full object-cover">
@@ -1031,7 +1264,7 @@
                     </div>
                 </div>
 
-                <!-- Project 6 -->
+                <!-- Project 7 - Song Recommender (2024) -->
                 <div class="card bg-white shadow-lg overflow-hidden">
                     <div class="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
                         <img src="assets/song.png" alt="Song Recommender cover" class="w-full h-full object-cover">
