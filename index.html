@@ -256,6 +256,73 @@
         .project-card:hover .project-overlay {
             opacity: 1;
         }
+
+        /* Achievements */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(16, 185, 129, 0.1);
+            color: #0ea5e9;
+            font-weight: 600;
+            padding: 6px 10px;
+            border-radius: 999px;
+            font-size: 0.9rem;
+        }
+        .badge i {
+            color: #0ea5e9;
+        }
+        .achievement-meta {
+            color: #475569;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        html[data-theme="dark"] .badge {
+            background: rgba(34, 197, 94, 0.12);
+            color: #38bdf8;
+        }
+        html[data-theme="dark"] .badge i {
+            color: #38bdf8;
+        }
+        html[data-theme="dark"] .achievement-meta {
+            color: #cbd5e1;
+        }
+
+        /* Project filters */
+        .project-filters {
+            gap: 0.75rem;
+        }
+        .filter-pill {
+            border-radius: 9999px;
+            padding: 8px 14px;
+            border: 1px solid rgba(51, 65, 85, 0.2);
+            color: #1f2937;
+            background: white;
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05);
+            transition: all 0.25s ease;
+        }
+        .filter-pill:hover {
+            transform: translateY(-1px);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        .filter-pill.active {
+            background: linear-gradient(135deg, var(--primary), #2563eb);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 10px 24px rgba(37, 99, 235, 0.25);
+        }
+        html[data-theme="dark"] .filter-pill {
+            background: #0b1224;
+            color: #e5e7eb;
+            border-color: rgba(226, 232, 240, 0.15);
+        }
+        html[data-theme="dark"] .filter-pill.active {
+            background: linear-gradient(135deg, #2563eb, #22c55e);
+            box-shadow: 0 10px 28px rgba(34, 197, 94, 0.25);
+        }
         
         .nav-link {
             position: relative;
@@ -669,6 +736,7 @@
                     <li><a href="#home" class="nav-link active text-gray-800 hover:text-primary font-medium">Home</a></li>
                     <li><a href="#resume" class="nav-link text-gray-800 hover:text-primary font-medium">Resume</a></li>
                     <li><a href="#projects" class="nav-link text-gray-800 hover:text-primary font-medium">Projects</a></li>
+                    <li><a href="#achievements" class="nav-link text-gray-800 hover:text-primary font-medium">Achievements</a></li>
                     <li><a href="#contact" class="nav-link text-gray-800 hover:text-primary font-medium">Contact</a></li>
                     <li><a href="https://github.com/VedVar43789" target="_blank" rel="noopener noreferrer" class="nav-link text-gray-800 hover:text-primary font-medium flex items-center"><i class="fab fa-github mr-1"></i>GitHub</a></li>
                 </ul>
@@ -690,6 +758,7 @@
                 <li><a href="#home" class="text-gray-800 hover:text-primary font-medium block">Home</a></li>
                 <li><a href="#resume" class="text-gray-800 hover:text-primary font-medium block">Resume</a></li>
                 <li><a href="#projects" class="text-gray-800 hover:text-primary font-medium block">Projects</a></li>
+                <li><a href="#achievements" class="text-gray-800 hover:text-primary font-medium block">Achievements</a></li>
                 <li><a href="#contact" class="text-gray-800 hover:text-primary font-medium block">Contact</a></li>
                 <li><a href="https://github.com/VedVar43789" target="_blank" rel="noopener noreferrer" class="text-gray-800 hover:text-primary font-medium block flex items-center"><i class="fab fa-github mr-2"></i>GitHub</a></li>
             </ul>
@@ -1089,9 +1158,78 @@
                 <p class="text-lg max-w-3xl mx-auto">A showcase of my technical projects in machine learning, data science, and software development.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="project-filters mb-8 flex flex-wrap justify-center reveal">
+                <button class="filter-pill active" data-filter="all">All</button>
+                <button class="filter-pill" data-filter="ml">ML/AI</button>
+                <button class="filter-pill" data-filter="cv">Computer Vision</button>
+                <button class="filter-pill" data-filter="nlp">NLP/RAG</button>
+                <button class="filter-pill" data-filter="streamlit">Streamlit</button>
+                <button class="filter-pill" data-filter="dataviz">Data Viz</button>
+                <button class="filter-pill" data-filter="timeseries">Time Series</button>
+                <button class="filter-pill" data-filter="recsys">Recommenders</button>
+                <button class="filter-pill" data-filter="api">APIs</button>
+                <button class="filter-pill" data-filter="backend">Backend/DB</button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="project-grid">
+                <!-- Project - PantryPal -->
+                <a href="https://pantrypalucsd.streamlit.app/" target="_blank" rel="noopener noreferrer" class="project-card card bg-white shadow-lg overflow-hidden block hover:shadow-xl transition-all duration-300" data-tags="ml cv streamlit recsys api">
+                    <div class="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
+                        <img src="assets/pantrypal.png" alt="PantryPal recipe recommender preview" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-semibold">PantryPal – Smart Recipe Recommender</h3>
+                            <span class="text-xs bg-blue-100 text-blue-600 py-1 px-2 rounded">Oct 2025 - Dec 2025</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Streamlit app that suggests recipes from text or pantry photos using image recognition, fuzzy matching, and nutrition-aware ranking.</p>
+                        <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                            <li>• Combines text input + EfficientNetB0 ingredient detection with OpenCV preprocessing</li>
+                            <li>• Fuzzy ingredient and recipe matching with duplicate handling and quick delete actions</li>
+                            <li>• Scores and ranks recipes by match overlap and nutrition, served via Streamlit UI</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Python</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">PyTorch</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">EfficientNetB0</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">OpenCV</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Streamlit</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">RapidFuzz</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">pandas</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project - TubeScope -->
+                <a href="https://tubescopeds3.streamlit.app/" target="_blank" rel="noopener noreferrer" class="project-card card bg-white shadow-lg overflow-hidden block hover:shadow-xl transition-all duration-300" data-tags="ml streamlit dataviz timeseries api">
+                    <div class="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
+                        <img src="assets/tubescope.png" alt="TubeScope dashboard preview" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-semibold">TubeScope – Trending Lifecycle Analytics</h3>
+                            <span class="text-xs bg-green-100 text-green-600 py-1 px-2 rounded">Oct 2025 - Dec 2025</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">ML-driven dashboard predicting which YouTube trending videos sustain virality beyond a day, with survival analysis visuals.</p>
+                        <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                            <li>• Automated daily YouTube Data API pulls to build time-stamped trending snapshots</li>
+                            <li>• Random Forest classifier optimized for recall plus Kaplan-Meier survival curves</li>
+                            <li>• Streamlit UI highlighting top viral candidates and feature importance insights</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Python</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">scikit-learn</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Random Forest</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">YouTube Data API</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">pandas</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Streamlit</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">lifelines</span>
+                        </div>
+                    </div>
+                </a>
+
                 <!-- Project 1 - The Seismic Lottery (May 2025 - Jun 2025) -->
-                <a href="https://vedvar43789.github.io/earthquakes/" target="_blank" rel="noopener noreferrer" class="card bg-white shadow-lg overflow-hidden block hover:shadow-xl transition-all duration-300">
+                <a href="https://vedvar43789.github.io/earthquakes/" target="_blank" rel="noopener noreferrer" class="project-card card bg-white shadow-lg overflow-hidden block hover:shadow-xl transition-all duration-300" data-tags="dataviz web">
                     <div class="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
                         <img src="assets/earth.png" alt="The Seismic Lottery cover" class="w-full h-full object-cover">
                     </div>
@@ -1118,7 +1256,7 @@
                 </a>
 
                 <!-- Project 2 - Watts the Problem (Mar 2025) -->
-                <a href="https://vedvar43789.github.io/watts-the-problem/" target="_blank" rel="noopener noreferrer" class="card bg-white shadow-lg overflow-hidden block hover:shadow-xl transition-all duration-300">
+                <a href="https://vedvar43789.github.io/watts-the-problem/" target="_blank" rel="noopener noreferrer" class="project-card card bg-white shadow-lg overflow-hidden block hover:shadow-xl transition-all duration-300" data-tags="ml tabular">
                     <div class="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
                         <img src="assets/outage.png" alt="Watts the Problem cover" class="w-full h-full object-cover">
                     </div>
@@ -1144,7 +1282,7 @@
                 </a>
 
                 <!-- Project 2 - MarketScope (Oct 2024 - Jan 2025) -->
-                <a href="https://github.com/Igosain08/stock-forecast-app" target="_blank" rel="noopener noreferrer" class="card bg-white shadow-lg overflow-hidden block hover:shadow-xl transition-all duration-300">
+                <a href="https://github.com/Igosain08/stock-forecast-app" target="_blank" rel="noopener noreferrer" class="project-card card bg-white shadow-lg overflow-hidden block hover:shadow-xl transition-all duration-300" data-tags="ml timeseries streamlit">
                     <div class="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
                         <img src="assets/market.png" alt="MarketScope cover" class="w-full h-full object-cover">
                     </div>
@@ -1170,7 +1308,7 @@
                 </a>
 
                 <!-- Project 3 - Blood Report Analysis Chatbot (Oct 2024) -->
-                <div class="card bg-white shadow-lg overflow-hidden">
+                <div class="project-card card bg-white shadow-lg overflow-hidden" data-tags="ml nlp streamlit api">
                     <div class="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
                         <img src="assets/blood.png" alt="Blood Report Analysis Chatbot cover" class="w-full h-full object-cover">
                     </div>
@@ -1197,7 +1335,7 @@
                 </div>
 
                 <!-- Project 4 - SAR Image Classification (Jun 2024 - Sept 2024) -->
-                <a href="https://github.com/VedVar43789/SAR-Image-Classification" target="_blank" rel="noopener noreferrer" class="card bg-white shadow-lg overflow-hidden block hover:shadow-xl transition-all duration-300">
+                <a href="https://github.com/VedVar43789/SAR-Image-Classification" target="_blank" rel="noopener noreferrer" class="project-card card bg-white shadow-lg overflow-hidden block hover:shadow-xl transition-all duration-300" data-tags="ml cv">
                     <div class="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
                         <img src="assets/sar.png" alt="SAR Image Classification cover" class="w-full h-full object-cover">
                     </div>
@@ -1223,7 +1361,7 @@
                 </a>
 
                 <!-- Project 5 - Advanced Image Processing & KNN (Jan 2024 - Mar 2024) -->
-                <div class="card bg-white shadow-lg overflow-hidden">
+                <div class="project-card card bg-white shadow-lg overflow-hidden" data-tags="ml">
                     <div class="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
                         <img src="assets/knn.png" alt="KNN Project cover" class="w-full h-full object-cover">
                     </div>
@@ -1248,7 +1386,7 @@
                 </div>
 
                 <!-- Project 6 - CampusShelf (2024) -->
-                <div class="card bg-white shadow-lg overflow-hidden">
+                <div class="project-card card bg-white shadow-lg overflow-hidden" data-tags="backend db desktop">
                     <div class="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
                         <img src="assets/lib.png" alt="CampusShelf cover" class="w-full h-full object-cover">
                     </div>
@@ -1273,7 +1411,7 @@
                 </div>
 
                 <!-- Project 7 - Song Recommender (2024) -->
-                <div class="card bg-white shadow-lg overflow-hidden">
+                <div class="project-card card bg-white shadow-lg overflow-hidden" data-tags="ml recsys audio">
                     <div class="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
                         <img src="assets/song.png" alt="Song Recommender cover" class="w-full h-full object-cover">
                     </div>
@@ -1293,6 +1431,85 @@
                             <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">ML</span>
                             <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Audio Analysis</span>
                             <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">NLP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="section bg-gray-50 reveal">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2">Achievements</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-lg max-w-3xl mx-auto">Highlights of impact, leadership, and recognition across projects.</p>
+            </div>
+
+            <div class="space-y-10">
+                <!-- Achievement 1 -->
+                <div class="card bg-white shadow-lg overflow-hidden">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-1/2 h-64 bg-gray-100 overflow-hidden">
+                            <img src="assets/pantrypal_win1.JPG" alt="PantryPal award preview" class="w-full h-full object-cover">
+                        </div>
+                        <div class="md:w-1/2 p-6 space-y-3 flex flex-col justify-center">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-xl font-semibold">PantryPal – DS3 Project Showcase</h3>
+                                <span class="badge"><i class="fas fa-trophy"></i>Best Project</span>
+                            </div>
+                            <p class="achievement-meta">Fall 2025 · Data Science Student Society</p>
+                            <ul class="text-sm text-gray-700 space-y-2">
+                                <li>• Mentored and led a 4-person team across planning, technical direction, and iterative execution.</li>
+                                <li>• Built image-to-ingredient + fuzzy recipe matching pipeline showcased live.</li>
+                                <li>• Won Best Project, Presentation, and Website awards at the Fall 2025 showcase.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievement 2 -->
+                <div class="card bg-white shadow-lg overflow-hidden">
+                    <div class="flex flex-col md:flex-row-reverse">
+                        <div class="md:w-1/2 h-64 bg-gray-100 overflow-hidden">
+                            <img src="assets/tubescope_win.JPG" alt="TubeScope dashboard award preview" class="w-full h-full object-cover">
+                        </div>
+                        <div class="md:w-1/2 p-6 space-y-3 flex flex-col justify-center">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-xl font-semibold">TubeScope – DS3 Project Showcase</h3>
+                                <span class="badge"><i class="fas fa-trophy"></i>Best Project · 3rd</span>
+                            </div>
+                            <p class="achievement-meta">Fall 2025 · Data Science Student Society Showcase</p>
+                            <ul class="text-sm text-gray-700 space-y-2">
+                                <li>• Mentored and led a 4-person team through planning, technical direction, and iterative execution.</li>
+                                <li>• Delivered a Streamlit dashboard predicting sustained virality with survival analysis visuals.</li>
+                                <li>• Automated daily YouTube Data API pulls and highlighted feature importance for creators and marketers.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievement 3 -->
+                <div class="card bg-white shadow-lg overflow-hidden">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-1/2 h-65 bg-gray-100 overflow-hidden">
+                            <img src="assets/106.png" alt="DSC 106 showcase awards preview" class="w-full h-full object-cover">
+                        </div>
+                        <div class="md:w-1/2 p-6 space-y-3 flex flex-col justify-center">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-xl font-semibold">The Seismic Lottery – DSC 106 Showcase</h3>
+                                <div class="flex items-center gap-2">
+                                    <span class="badge"><i class="fas fa-trophy"></i>Best Project</span>
+                                    <span class="badge"><i class="fas fa-star"></i>People's Choice</span>
+                                </div>
+                            </div>
+                            <p class="achievement-meta">Spring 2025 · DSC 106 (82 students)</p>
+                            <ul class="text-sm text-gray-700 space-y-2">
+                                <li>• Won Best Project and People’s Choice for an interactive earthquake impact visualization.</li>
+                                <li>• Built 3D globe, magnitude/casualty toggles, and energy calculator with D3.js + TopoJSON.</li>
+                                <li>• Led narrative design and scroll-based interactions to show how infrastructure shapes outcomes.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -1480,6 +1697,44 @@
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.nav-link');
         
+        // Project filter by skill tags
+        (function() {
+            const filterButtons = Array.from(document.querySelectorAll('.filter-pill'));
+            const projectCards = Array.from(document.querySelectorAll('.project-card'));
+            if (!filterButtons.length || !projectCards.length) return;
+
+            const allButton = filterButtons.find(btn => btn.dataset.filter === 'all');
+
+            function applyFilter() {
+                const activeFilters = filterButtons
+                    .filter(btn => btn.classList.contains('active') && btn.dataset.filter !== 'all')
+                    .map(btn => btn.dataset.filter);
+
+                projectCards.forEach(card => {
+                    const tags = (card.dataset.tags || '').split(' ').filter(Boolean);
+                    const isMatch = activeFilters.length === 0 || activeFilters.every(tag => tags.includes(tag));
+                    card.classList.toggle('hidden', !isMatch);
+                });
+            }
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    if (button.dataset.filter === 'all') {
+                        filterButtons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                    } else {
+                        button.classList.toggle('active');
+                        if (allButton) allButton.classList.remove('active');
+                        const anyActive = filterButtons.some(btn => btn.dataset.filter !== 'all' && btn.classList.contains('active'));
+                        if (!anyActive && allButton) allButton.classList.add('active');
+                    }
+                    applyFilter();
+                });
+            });
+
+            applyFilter();
+        })();
+
         window.addEventListener('scroll', () => {
             let current = '';
             
