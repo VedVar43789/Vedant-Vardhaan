@@ -573,6 +573,7 @@
         #navbar {
             backdrop-filter: saturate(180%) blur(10px);
             background: rgba(255, 255, 255, 0.85);
+            transition: box-shadow 0.3s ease;
         }
         html[data-theme="dark"] #navbar {
             background: rgba(17, 24, 39, 0.7);
@@ -722,7 +723,7 @@
 
 <body>
     <!-- Navigation -->
-    <header class="fixed w-full bg-white bg-opacity-95 shadow-sm z-50 transition-all duration-300" id="navbar">
+    <header class="fixed w-full bg-white bg-opacity-95 shadow-sm z-50" id="navbar">
         <div class="container mx-auto px-4 py-3 flex items-center justify-between">
             <a href="#home" class="relative group">
                 <div class="flex items-center">
@@ -1705,17 +1706,35 @@
             });
         }
         
+        // Throttle function to limit scroll event frequency
+        function throttle(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+        
         // Navbar Scroll Effect
         const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow-md');
-                navbar.classList.remove('shadow-sm');
-            } else {
-                navbar.classList.remove('shadow-md');
-                navbar.classList.add('shadow-sm');
+        let lastScrollY = window.scrollY;
+        window.addEventListener('scroll', throttle(() => {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY !== lastScrollY) {
+                if (currentScrollY > 50) {
+                    navbar.classList.add('shadow-md');
+                    navbar.classList.remove('shadow-sm');
+                } else {
+                    navbar.classList.remove('shadow-md');
+                    navbar.classList.add('shadow-sm');
+                }
+                lastScrollY = currentScrollY;
             }
-        });
+        }, 16));
         
         // Scroll reveal
         (function() {
@@ -1792,14 +1811,14 @@
             applyFilter();
         })();
 
-        window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', throttle(() => {
             let current = '';
             
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
                 
-                if (pageYOffset >= sectionTop - 200) {
+                if (window.pageYOffset >= sectionTop - 200) {
                     current = section.getAttribute('id');
                 }
             });
@@ -1810,18 +1829,23 @@
                     link.classList.add('active');
                 }
             });
-        });
+        }, 100));
         
         // Scroll to Top Button
         const scrollTopBtn = document.getElementById('scrollTop');
+        let scrollTopVisible = false;
         
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                scrollTopBtn.classList.add('visible');
-            } else {
-                scrollTopBtn.classList.remove('visible');
+        window.addEventListener('scroll', throttle(() => {
+            const shouldBeVisible = window.scrollY > 500;
+            if (shouldBeVisible !== scrollTopVisible) {
+                if (shouldBeVisible) {
+                    scrollTopBtn.classList.add('visible');
+                } else {
+                    scrollTopBtn.classList.remove('visible');
+                }
+                scrollTopVisible = shouldBeVisible;
             }
-        });
+        }, 100));
         
         scrollTopBtn.addEventListener('click', () => {
             window.scrollTo({
