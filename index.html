@@ -196,7 +196,7 @@
         .timeline-item {
             position: relative;
             padding-left: 28px;
-            padding-bottom: 40px;
+            padding-bottom: 28px;
             transition: all 0.3s ease;
         }
         
@@ -239,6 +239,59 @@
         
         .timeline-item:last-child::after {
             display: none;
+        }
+
+        /* Expandable experience cards (native <details>) */
+        .exp-details {
+            border: 1px solid rgba(6, 62, 183, 0.1);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .exp-details summary {
+            list-style: none;
+            cursor: pointer;
+            user-select: none;
+            outline-offset: 2px;
+            border-radius: 0.5rem;
+        }
+        .exp-details summary::-webkit-details-marker {
+            display: none;
+        }
+        .exp-details[open] {
+            border-color: rgba(6, 62, 183, 0.28);
+            box-shadow: 0 10px 30px -12px rgba(6, 62, 183, 0.18);
+        }
+        html[data-theme="dark"] .exp-details {
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: none;
+        }
+        html[data-theme="dark"] .exp-details[open] {
+            border-color: rgba(59, 130, 246, 0.42);
+            box-shadow: 0 14px 40px -14px rgba(0, 0, 0, 0.75);
+        }
+        .exp-chevron {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 9999px;
+            background-color: rgba(6, 62, 183, 0.08);
+            color: var(--primary);
+            font-size: 0.65rem;
+            transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-shrink: 0;
+        }
+        .exp-details[open] .exp-chevron {
+            transform: rotate(-180deg);
+        }
+        html[data-theme="dark"] .exp-chevron {
+            background-color: rgba(59, 130, 246, 0.18);
+        }
+        .exp-highlights {
+            border-top: 1px solid rgba(226, 232, 240, 0.95);
+        }
+        html[data-theme="dark"] .exp-highlights {
+            border-top-color: rgba(255, 255, 255, 0.1);
         }
         
         .project-card {
@@ -890,144 +943,243 @@
                         Experience
                     </h3>
 
+                    <p class="text-sm text-gray-600 mb-5 max-w-xl leading-relaxed flex items-start gap-2">
+                        <span class="text-primary mt-0.5" aria-hidden="true"><i class="fas fa-layer-group"></i></span>
+                        <span>Tap a role to reveal highlights. Opening one automatically closes the others.</span>
+                    </p>
+
                     <div class="timeline-item reveal">
-                        <div class="bg-white p-6 rounded-lg shadow-sm">
-                            <div class="flex items-start justify-between mb-3">
-                                <div>
-                                    <div class="text-primary font-medium">Oct 2025 - Present</div>
-                                    <h4 class="text-xl font-semibold mt-1">Project Lead – Mangrove Monitoring</h4>
-                                    <p class="text-gray-700">Engineers for Exploration (E4E) @ UC San Diego</p>
+                        <details name="resume-exp" class="exp-details bg-white rounded-lg shadow-sm overflow-hidden">
+                            <summary class="flex items-start justify-between gap-3 p-4 md:p-5">
+                                <div class="min-w-0 flex-1">
+                                    <div class="text-primary font-medium text-sm md:text-base">May 2026 - Present</div>
+                                    <h4 class="text-lg md:text-xl font-semibold mt-1">Chief Technology Officer & Founding Engineer</h4>
+                                    <p class="text-gray-700 text-sm md:text-base">UniCircle</p>
+                                    <p class="text-sm text-gray-600 mt-1">San Diego, California, United States</p>
                                 </div>
-                                <div class="w-12 h-12 rounded-lg flex items-center justify-center ml-4 overflow-hidden">
-                                    <img src="assets/e4e.png" alt="E4E Logo" class="w-full h-full object-contain">
+                                <div class="flex flex-col items-end gap-2 flex-shrink-0">
+                                    <div class="w-14 h-14 rounded-lg flex items-center justify-center overflow-hidden">
+                                        <img src="assets/unicircle.png" alt="" class="w-full h-full object-contain" width="56" height="56">
+                                    </div>
+                                    <span class="exp-chevron" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
                                 </div>
+                            </summary>
+                            <div class="exp-highlights px-4 md:px-5 pb-4 md:pb-5 pt-1">
+                                <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm md:text-base">
+                                    <li>Own all technical architecture and infrastructure for unicircle.app, a club discovery and recruitment platform built on React/TypeScript, Supabase, and Vercel.</li>
+                                    <li>Designed a FERPA/CCPA-compliant backend using Supabase Edge Functions and PostgreSQL; responsible for data security, API design, and system reliability.</li>
+                                    <li>Lead all engineering contributors and external vendors: coding standards, code review process, CI/CD pipelines, and technical roadmap in partnership with the CEO.</li>
+                                </ul>
                             </div>
-                            <ul class="mt-4 list-disc list-inside">
-                                <li>Leading an interdisciplinary team to develop an AI-driven system that predicts mangrove presence by fusing drone imagery and Sentinel-2 satellite data, advancing coastal ecosystem monitoring through remote sensing and machine learning.</li>
-                                <li>Overseeing data pipeline design, feature fusion, and model integration, collaborating with data and ML engineers to build scalable, high-performance workflows using Python, TensorFlow, NumPy, and Google Earth Engine APIs.</li>
-                                <li>Driving the project roadmap and research direction, bridging geospatial analytics, computer vision, and environmental informatics to deliver a deployable predictive model for the Scripps Institution of Oceanography.</li>
-                            </ul>
-                        </div>
+                        </details>
                     </div>
 
                     <div class="timeline-item reveal reveal-delay-1">
-                        <div class="bg-white p-6 rounded-lg shadow-sm">
-                            <div class="flex items-start justify-between mb-3">
-                                <div>
-                                    <div class="text-primary font-medium">Jun 2025 - Sep 2025</div>
-                                    <h4 class="text-xl font-semibold mt-1">Technology Consultant Intern</h4>
-                                    <p class="text-gray-700">PricewaterhouseCoopers Services LLP (PwC India)</p>
+                        <details name="resume-exp" class="exp-details bg-white rounded-lg shadow-sm overflow-hidden">
+                            <summary class="flex items-start justify-between gap-3 p-4 md:p-5">
+                                <div class="min-w-0 flex-1">
+                                    <div class="text-primary font-medium text-sm md:text-base">Nov 2025 - Present</div>
+                                    <h4 class="text-lg md:text-xl font-semibold mt-1">Applied AI Research Assistant</h4>
+                                    <p class="text-gray-700 text-sm md:text-base">UC San Diego Computer Science and Engineering Department (CSE)</p>
+                                    <p class="text-sm text-gray-600 mt-1">San Diego, California, United States</p>
                                 </div>
-                                <div class="w-14 h-14 rounded-lg flex items-center justify-center ml-4 overflow-hidden">
-                                    <img src="assets/pwc.png" alt="PwC Logo" class="w-full h-full object-contain">
+                                <div class="flex flex-col items-end gap-2 flex-shrink-0">
+                                    <div class="w-14 h-14 rounded-lg flex items-center justify-center overflow-hidden">
+                                        <img src="assets/cse.png" alt="" class="w-full h-full object-contain" width="56" height="56">
+                                    </div>
+                                    <span class="exp-chevron" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
                                 </div>
+                            </summary>
+                            <div class="exp-highlights px-4 md:px-5 pb-4 md:pb-5 pt-1">
+                                <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm md:text-base">
+                                    <li>Conducting research under Professor Deepak Kumar (UCSD) and Professor Jeremy D. Foote (Purdue University) studying the impact of chatbot-driven interventions on Reddit user behavior and community toxicity, analyzing how conversational tone affects engagement and behavioral change pre- and post-intervention.</li>
+                                    <li>Co-authoring a research paper examining whether AI-mediated conversations can reduce toxic discourse at scale on social platforms.</li>
+                                    <li>Built a web scraping pipeline to extract and structure data from medical websites, supporting early-stage data collection for lab research initiatives.</li>
+                                </ul>
                             </div>
-                            <ul class="mt-4 list-disc list-inside">
-                                <li>Built agentic AI chatbot for natural language–based AWS/Azure onboarding and infrastructure provisioning across 15+ cloud services.</li>
-                                <li>Designed multi-agent orchestration with LangGraph, Gemini 2.5 Pro, and LangChain, enabling modular service integration and cutting manual configuration time by 60%.</li>
-                                <li>Implemented secure credential management and automated baseline security (IAM, GuardDuty, CloudTrail, Config) with Azure Key Vault, accelerating migration timelines by 40% while ensuring compliance.</li>
-                            </ul>
-                        </div>
+                        </details>
                     </div>
 
                     <div class="timeline-item reveal reveal-delay-2">
-                        <div class="bg-white p-6 rounded-lg shadow-sm">
-                            <div class="flex items-start justify-between mb-3">
-                                <div>
-                                    <div class="text-primary font-medium">Jul 2025 - Present</div>
-                                    <h4 class="text-xl font-semibold mt-1">Assistant Projects Director (Projects Mentor)</h4>
-                                    <p class="text-gray-700">Data Science Student Society (DS3), UC San Diego</p>
+                        <details name="resume-exp" class="exp-details bg-white rounded-lg shadow-sm overflow-hidden">
+                            <summary class="flex items-start justify-between gap-3 p-4 md:p-5">
+                                <div class="min-w-0 flex-1">
+                                    <div class="text-primary font-medium text-sm md:text-base">Oct 2025 - Apr 2026</div>
+                                    <h4 class="text-lg md:text-xl font-semibold mt-1">Undergraduate Researcher (Project Lead)</h4>
+                                    <p class="text-gray-700 text-sm md:text-base">Engineers for Exploration (E4E) @ UC San Diego</p>
+                                    <p class="text-sm text-gray-600 mt-1">San Diego, California, United States</p>
                                 </div>
-                                <div class="w-12 h-12 rounded-lg flex items-center justify-center ml-4 overflow-hidden">
-                                    <img src="assets/ds3.png" alt="DS3 Logo" class="w-full h-full object-contain">
+                                <div class="flex flex-col items-end gap-2 flex-shrink-0">
+                                    <div class="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
+                                        <img src="assets/e4e.png" alt="" class="w-full h-full object-contain" width="48" height="48">
+                                    </div>
+                                    <span class="exp-chevron" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
                                 </div>
+                            </summary>
+                            <div class="exp-highlights px-4 md:px-5 pb-4 md:pb-5 pt-1">
+                                <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm md:text-base">
+                                    <li>Leading an interdisciplinary team to develop an AI-driven system that predicts mangrove presence by fusing drone imagery and Sentinel-2 satellite data, advancing coastal ecosystem monitoring through remote sensing and machine learning.</li>
+                                    <li>Overseeing data pipeline design, feature fusion, and model integration, collaborating with data and ML engineers to build scalable, high-performance workflows using Python, TensorFlow, NumPy, and Google Earth Engine APIs.</li>
+                                    <li>Driving the project roadmap and research direction, bridging geospatial analytics, computer vision, and environmental informatics to deliver a deployable predictive model for the Scripps Institution of Oceanography.</li>
+                                </ul>
                             </div>
-                            <ul class="mt-4 list-disc list-inside">
-                                <li>Lead the ideation and selection of 10-12+ quarterly data science projects by sourcing high-quality datasets, defining problem statements, and aligning scope with industry-relevant methodologies.</li>
-                                <li>Mentor multiple project teams through full data pipelines, providing guidance on data preprocessing, exploratory analysis, feature engineering, model selection, and deployment strategies.</li>
-                                <li>Collaborate with senior leadership in weekly technical meetings to coordinate project timelines, establish evaluation metrics, and oversee execution for end-of-quarter showcases.</li>
-                            </ul>
-                        </div>
+                        </details>
                     </div>
 
                     <div class="timeline-item reveal reveal-delay-3">
-                        <div class="bg-white p-6 rounded-lg shadow-sm">
-                            <div class="flex items-start justify-between mb-3">
-                                <div>
-                                    <div class="text-primary font-medium">Mar 2025 - Jun 2025</div>
-                                    <h4 class="text-xl font-semibold mt-1">Tutor/Instructional Assistant</h4>
-                                    <p class="text-gray-700">Halicioglu Data Science Institute, UC San Diego</p>
+                        <details name="resume-exp" class="exp-details bg-white rounded-lg shadow-sm overflow-hidden">
+                            <summary class="flex items-start justify-between gap-3 p-4 md:p-5">
+                                <div class="min-w-0 flex-1">
+                                    <div class="text-primary font-medium text-sm md:text-base">Jun 2025 - Sep 2025</div>
+                                    <h4 class="text-lg md:text-xl font-semibold mt-1">Technology Consultant Intern - AI Engineering</h4>
+                                    <p class="text-gray-700 text-sm md:text-base">PricewaterhouseCoopers Services LLP (PwC India)</p>
+                                    <p class="text-sm text-gray-600 mt-1">Gurugram, India</p>
                                 </div>
-                                <div class="w-12 h-12 rounded-lg flex items-center justify-center ml-4 overflow-hidden">
-                                    <img src="assets/hdsi.png" alt="HDSI Logo" class="w-full h-full object-contain">
+                                <div class="flex flex-col items-end gap-2 flex-shrink-0">
+                                    <div class="w-14 h-14 rounded-lg flex items-center justify-center overflow-hidden">
+                                        <img src="assets/pwc.png" alt="" class="w-full h-full object-contain" width="56" height="56">
+                                    </div>
+                                    <span class="exp-chevron" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
                                 </div>
+                            </summary>
+                            <div class="exp-highlights px-4 md:px-5 pb-4 md:pb-5 pt-1">
+                                <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm md:text-base">
+                                    <li>Built agentic AI chatbot for natural language–based AWS/Azure onboarding and infrastructure provisioning across 15+ cloud services.</li>
+                                    <li>Designed multi-agent orchestration with LangGraph, Gemini 2.5 Pro, and LangChain, enabling modular service integration and cutting manual configuration time by 60%.</li>
+                                    <li>Implemented secure credential management and automated baseline security (IAM, GuardDuty, CloudTrail, Config) with Azure Key Vault, accelerating migration timelines by 40% while ensuring compliance.</li>
+                                </ul>
                             </div>
-                            <ul class="mt-4 list-disc list-inside">
-                                <li>Conduct weekly discussion sections and office hours for DSC 40A, reinforcing key concepts in empirical risk minimization, optimization, regression, classification, and discrete probability.</li>
-                                <li>Provide targeted tutoring to clarify theoretical machine learning principles, ensuring students develop rigorous problem-solving and mathematical reasoning skills.</li>
-                                <li>Evaluate assignments and exams with a focus on consistency and fairness, offering structured feedback to enhance comprehension.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item reveal">
-                        <div class="bg-white p-6 rounded-lg shadow-sm">
-                            <div class="flex items-start justify-between mb-3">
-                                <div>
-                                    <div class="text-primary font-medium">Nov 2024 - Present</div>
-                                    <h4 class="text-xl font-semibold mt-1">Engineering Manager & Software Developer</h4>
-                                    <p class="text-gray-700">Computer Science and Engineering Society (CSES Open-Source)</p>
-                                </div>
-                                <div class="w-12 h-12 rounded-lg flex items-center justify-center ml-4 overflow-hidden">
-                                    <img src="assets/cses.png" alt="CSES Logo" class="w-full h-full object-contain">
-                                </div>
-                            </div>
-                            <ul class="mt-4 list-disc list-inside">
-                                <li>Lead development of TritonSpend, a cross-platform financial management app built with React Native, Node.js, and PostgreSQL.</li>
-                                <li>Oversee sprint planning, developer onboarding, code reviews, and architectural decisions to ensure scalable and secure feature delivery (e.g., budget tracking, real-time analytics, AI-based insights).</li>
-                                <li>Implement CI/CD best practices, perform QA testing, and maintain technical documentation to streamline open-source contributions.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item reveal reveal-delay-1">
-                        <div class="bg-white p-6 rounded-lg shadow-sm">
-                            <div class="flex items-start justify-between mb-3">
-                                <div>
-                                    <div class="text-primary font-medium">Oct 2024 - Jan 2025</div>
-                                    <h4 class="text-xl font-semibold mt-1">Quantitative Analyst</h4>
-                                    <p class="text-gray-700">Triton Quantitative Trading (TQT)</p>
-                                </div>
-                                <div class="w-12 h-12 rounded-lg flex items-center justify-center ml-4 overflow-hidden">
-                                    <img src="assets/tqt.png" alt="Triton Quantitative Trading Logo" class="w-full h-full object-contain">
-                                </div>
-                            </div>
-                            <ul class="mt-4 list-disc list-inside">
-                                <li>Built a hybrid LSTM/GRU forecasting model with Monte Carlo simulations using Geometric Brownian Motion for probabilistic stock predictions.</li>
-                                <li>Integrated technical indicators, VADER-based sentiment analysis, and risk metrics (Sharpe Ratio) for multi-modal input.</li>
-                                <li>Deployed as a modular Streamlit app with yFinance ingestion, sklearn preprocessing, and REST API support.</li>
-                            </ul>
-                        </div>
+                        </details>
                     </div>
 
                     <div class="timeline-item reveal reveal-delay-2">
-                        <div class="bg-white p-6 rounded-lg shadow-sm">
-                            <div class="flex items-start justify-between mb-3">
-                                <div>
-                                    <div class="text-primary font-medium">Jun 2024 - Sept 2024</div>
-                                    <h4 class="text-xl font-semibold mt-1">Data Analyst Research Intern</h4>
-                                    <p class="text-gray-700">Indian Institute of Technology (IIT) - Guwahati</p>
+                        <details name="resume-exp" class="exp-details bg-white rounded-lg shadow-sm overflow-hidden">
+                            <summary class="flex items-start justify-between gap-3 p-4 md:p-5">
+                                <div class="min-w-0 flex-1">
+                                    <div class="text-primary font-medium text-sm md:text-base">Jul 2025 - Present</div>
+                                    <h4 class="text-lg md:text-xl font-semibold mt-1">Assistant Projects Director (Projects Mentor)</h4>
+                                    <p class="text-gray-700 text-sm md:text-base">Data Science Student Society (DS3), UC San Diego</p>
+                                    <p class="text-sm text-gray-600 mt-1">San Diego, California, United States</p>
                                 </div>
-                                <div class="w-12 h-12 rounded-lg flex items-center justify-center ml-4 overflow-hidden">
-                                    <img src="assets/IITG_logo.png" alt="IIT Guwahati Logo" class="w-full h-full object-contain">
+                                <div class="flex flex-col items-end gap-2 flex-shrink-0">
+                                    <div class="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
+                                        <img src="assets/ds3.png" alt="" class="w-full h-full object-contain" width="48" height="48">
+                                    </div>
+                                    <span class="exp-chevron" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
                                 </div>
+                            </summary>
+                            <div class="exp-highlights px-4 md:px-5 pb-4 md:pb-5 pt-1">
+                                <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm md:text-base">
+                                    <li>Lead the ideation and selection of 10-12+ quarterly data science projects by sourcing high-quality datasets, defining problem statements, and aligning scope with industry-relevant methodologies.</li>
+                                    <li>Mentor multiple project teams through full data pipelines, providing guidance on data preprocessing, exploratory analysis, feature engineering, model selection, and deployment strategies.</li>
+                                    <li>Collaborate with senior leadership in weekly technical meetings to coordinate project timelines, establish evaluation metrics, and oversee execution for end-of-quarter showcases.</li>
+                                </ul>
                             </div>
-                            <ul class="mt-4 list-disc list-inside">
-                                <li>Developed a Convolutional Neural Network Image-processing model with ResNet50 for SAR image classification, achieving 80% accuracy in segmenting land cover across agriculture, barren land, grassland, and urban areas.</li>
-                                <li>Applied advanced speckle filters (Lee and Gamma MAP) to enhance SAR image quality by effectively reducing noise.</li>
-                                <li>Conducted extensive model evaluation, using precision, recall, F1-scores, and confusion matrices to ensure robust classification performance.</li>
-                            </ul>
-                        </div>
+                        </details>
+                    </div>
+
+                    <div class="timeline-item reveal reveal-delay-3">
+                        <details name="resume-exp" class="exp-details bg-white rounded-lg shadow-sm overflow-hidden">
+                            <summary class="flex items-start justify-between gap-3 p-4 md:p-5">
+                                <div class="min-w-0 flex-1">
+                                    <div class="text-primary font-medium text-sm md:text-base">Mar 2025 - Jun 2025</div>
+                                    <h4 class="text-lg md:text-xl font-semibold mt-1">Tutor/Instructional Assistant</h4>
+                                    <p class="text-gray-700 text-sm md:text-base">Halicioglu Data Science Institute, UC San Diego</p>
+                                    <p class="text-sm text-gray-600 mt-1">San Diego, California, United States</p>
+                                </div>
+                                <div class="flex flex-col items-end gap-2 flex-shrink-0">
+                                    <div class="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
+                                        <img src="assets/hdsi.png" alt="" class="w-full h-full object-contain" width="48" height="48">
+                                    </div>
+                                    <span class="exp-chevron" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+                                </div>
+                            </summary>
+                            <div class="exp-highlights px-4 md:px-5 pb-4 md:pb-5 pt-1">
+                                <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm md:text-base">
+                                    <li>Conduct weekly discussion sections and office hours for DSC 40A, reinforcing key concepts in empirical risk minimization, optimization, regression, classification, and discrete probability.</li>
+                                    <li>Provide targeted tutoring to clarify theoretical machine learning principles, ensuring students develop rigorous problem-solving and mathematical reasoning skills.</li>
+                                    <li>Evaluate assignments and exams with a focus on consistency and fairness, offering structured feedback to enhance comprehension.</li>
+                                </ul>
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="timeline-item reveal">
+                        <details name="resume-exp" class="exp-details bg-white rounded-lg shadow-sm overflow-hidden">
+                            <summary class="flex items-start justify-between gap-3 p-4 md:p-5">
+                                <div class="min-w-0 flex-1">
+                                    <div class="text-primary font-medium text-sm md:text-base">Nov 2024 - Present</div>
+                                    <h4 class="text-lg md:text-xl font-semibold mt-1">Engineering Manager & Software Developer</h4>
+                                    <p class="text-gray-700 text-sm md:text-base">Computer Science and Engineering Society (CSES Open-Source)</p>
+                                    <p class="text-sm text-gray-600 mt-1">San Diego, California, United States</p>
+                                </div>
+                                <div class="flex flex-col items-end gap-2 flex-shrink-0">
+                                    <div class="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
+                                        <img src="assets/cses.png" alt="" class="w-full h-full object-contain" width="48" height="48">
+                                    </div>
+                                    <span class="exp-chevron" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+                                </div>
+                            </summary>
+                            <div class="exp-highlights px-4 md:px-5 pb-4 md:pb-5 pt-1">
+                                <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm md:text-base">
+                                    <li>Lead development of TritonSpend, a cross-platform financial management app built with React Native, Node.js, and PostgreSQL.</li>
+                                    <li>Oversee sprint planning, developer onboarding, code reviews, and architectural decisions to ensure scalable and secure feature delivery (e.g., budget tracking, real-time analytics, AI-based insights).</li>
+                                    <li>Implement CI/CD best practices, perform QA testing, and maintain technical documentation to streamline open-source contributions.</li>
+                                </ul>
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="timeline-item reveal reveal-delay-1">
+                        <details name="resume-exp" class="exp-details bg-white rounded-lg shadow-sm overflow-hidden">
+                            <summary class="flex items-start justify-between gap-3 p-4 md:p-5">
+                                <div class="min-w-0 flex-1">
+                                    <div class="text-primary font-medium text-sm md:text-base">Oct 2024 - Jan 2025</div>
+                                    <h4 class="text-lg md:text-xl font-semibold mt-1">Quantitative Analyst</h4>
+                                    <p class="text-gray-700 text-sm md:text-base">Triton Quantitative Trading (TQT)</p>
+                                    <p class="text-sm text-gray-600 mt-1">San Diego, California, United States</p>
+                                </div>
+                                <div class="flex flex-col items-end gap-2 flex-shrink-0">
+                                    <div class="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
+                                        <img src="assets/tqt.png" alt="" class="w-full h-full object-contain" width="48" height="48">
+                                    </div>
+                                    <span class="exp-chevron" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+                                </div>
+                            </summary>
+                            <div class="exp-highlights px-4 md:px-5 pb-4 md:pb-5 pt-1">
+                                <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm md:text-base">
+                                    <li>Built a hybrid LSTM/GRU forecasting model with Monte Carlo simulations using Geometric Brownian Motion for probabilistic stock predictions.</li>
+                                    <li>Integrated technical indicators, VADER-based sentiment analysis, and risk metrics (Sharpe Ratio) for multi-modal input.</li>
+                                    <li>Deployed as a modular Streamlit app with yFinance ingestion, sklearn preprocessing, and REST API support.</li>
+                                </ul>
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="timeline-item reveal reveal-delay-2">
+                        <details name="resume-exp" class="exp-details bg-white rounded-lg shadow-sm overflow-hidden">
+                            <summary class="flex items-start justify-between gap-3 p-4 md:p-5">
+                                <div class="min-w-0 flex-1">
+                                    <div class="text-primary font-medium text-sm md:text-base">Jun 2024 - Sept 2024</div>
+                                    <h4 class="text-lg md:text-xl font-semibold mt-1">ML Research Intern</h4>
+                                    <p class="text-gray-700 text-sm md:text-base">Indian Institute of Technology (IIT) Guwahati</p>
+                                    <p class="text-sm text-gray-600 mt-1">Assam, India</p>
+                                </div>
+                                <div class="flex flex-col items-end gap-2 flex-shrink-0">
+                                    <div class="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
+                                        <img src="assets/IITG_logo.png" alt="" class="w-full h-full object-contain" width="48" height="48">
+                                    </div>
+                                    <span class="exp-chevron" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+                                </div>
+                            </summary>
+                            <div class="exp-highlights px-4 md:px-5 pb-4 md:pb-5 pt-1">
+                                <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm md:text-base">
+                                    <li>Developed a Convolutional Neural Network Image-processing model with ResNet50 for SAR image classification, achieving 80% accuracy in segmenting land cover across agriculture, barren land, grassland, and urban areas.</li>
+                                    <li>Applied advanced speckle filters (Lee and Gamma MAP) to enhance SAR image quality by effectively reducing noise.</li>
+                                    <li>Conducted extensive model evaluation, using precision, recall, F1-scores, and confusion matrices to ensure robust classification performance.</li>
+                                </ul>
+                            </div>
+                        </details>
                     </div>
                 </div>
             </div>
